@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "rgb2gbr"
-version = "0.1.0"
+version = "1.0.0"
 description = ""
 authors = ["xiaoling <samuel.ling.xiao@qq.com>"]
 readme = "README.md"
 packages = [{include = "RGB2GBR/*"}]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.14"
+python = "3.10.12"
 numpy = "2.0"
 matplotlib = "^3.10.3"
 ttkbootstrap = "^1.14.1"

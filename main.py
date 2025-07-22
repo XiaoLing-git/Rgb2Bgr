@@ -4,7 +4,7 @@ from lnk_screen_picture.app import LnkScreenPictureApp
 
 
 def start_app():
-    version = "1.0.0"
+    version = "1.1.0"
     root = ttk.Window(title=f"水墨屏图片处理 {version}")
 
     LnkScreenPictureApp(root)

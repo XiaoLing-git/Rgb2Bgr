@@ -14,6 +14,9 @@ class ImageTools:
         self.rgb_file_input_file = rgb_file_input_file
         self.bgr_file_output_file = bgr_file_output_file
         self.__assert_attr()
+        print(self.rgb_file_input_file)
+        print(self.bgr_file_output_file)
+        print(BIN_FILE_PATH)
 
         self.lib = ctypes.cdll.LoadLibrary(str(BIN_FILE_PATH))
 

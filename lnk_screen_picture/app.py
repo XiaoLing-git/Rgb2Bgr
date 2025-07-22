@@ -9,6 +9,7 @@ from PIL import Image, ImageTk
 from ttkbootstrap.constants import *  # type: ignore
 
 from RGB2GBR.api import ImageTools
+from RGB2GBR.errors import Rgb2BgrException
 from base_ui.base import BaseUi
 from lnk_screen_picture.model import TEMP_FOLDER, SAVE_FOLDER
 from lnk_screen_picture.ui.picture_control_element import PictureControlElement
@@ -156,52 +157,57 @@ class LnkScreenPictureApp(BaseUi):
             )
 
     def bin_save_button_onclick(self):
-        print("bin_save_button_onclick was call")
-        file_path = self.control.file_choice.value.get()
-        if len(file_path) == 0:
-            messagebox.showinfo("警告", "未选中图片")
-            return
-        file_path = Path(file_path)
-        if not file_path.exists():
-            messagebox.showinfo("警告", "文件不存在")
-            return
+        try:
+            print("bin_save_button_onclick was call")
+            file_path = self.control.file_choice.value.get()
+            if len(file_path) == 0:
+                messagebox.showinfo("警告", "未选中图片")
+                return
+            file_path = Path(file_path)
+            if not file_path.exists():
+                messagebox.showinfo("警告", "文件不存在")
+                return
 
-        folder_path = self.control.save.value.get()
-        option_str = self.control.pic_size.idle_port_check.get()
-        contrast_value = float(self.control.contrast.value.get())
-        sharp_value = float(self.control.sharp.value.get())
-        de_color = self.control.de_color.check_var.get()
+            folder_path = self.control.save.value.get()
+            option_str = self.control.pic_size.idle_port_check.get()
+            contrast_value = float(self.control.contrast.value.get())
+            sharp_value = float(self.control.sharp.value.get())
+            de_color = self.control.de_color.check_var.get()
 
-        if len(folder_path) > 0 and Path(folder_path).exists():
-            shutil.copy(
-                self.last_file,
-                Path(folder_path)
-                / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.name}",
-            )
-            image_tool = ImageTools(
-                Path(folder_path)
-                / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.name}",
-                Path(folder_path)
-                / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin",
-            )
-            Path(
-                folder_path
-            ) / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin"
-            image_tool.run()
-        else:
-            shutil.copy(
-                self.last_file,
-                SAVE_FOLDER
-                / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.name}",
-            )
-            image_tool = ImageTools(
-                Path(folder_path)
-                / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.name}",
-                Path(folder_path)
-                / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin",
-            )
-            print(
-                Path(folder_path)
-                / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin"
-            )
-            image_tool.run()
+            if len(folder_path) > 0 and Path(folder_path).exists():
+                shutil.copy(
+                    self.last_file,
+                    Path(folder_path)
+                    / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.name}",
+                )
+                image_tool = ImageTools(
+                    Path(folder_path)
+                    / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.name}",
+                    Path(folder_path)
+                    / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin",
+                )
+                Path(
+                    folder_path
+                ) / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin"
+                image_tool.run()
+            else:
+                shutil.copy(
+                    self.last_file,
+                    SAVE_FOLDER
+                    / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.name}",
+                )
+                image_tool = ImageTools(
+                    SAVE_FOLDER
+                    / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.name}",
+                    SAVE_FOLDER
+                    / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin",
+                )
+                print(
+                    Path(folder_path)
+                    / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin"
+                )
+                image_tool.run()
+        except Rgb2BgrException as e:
+            messagebox.showinfo("Error", "不支持黑白图片")
+        except Exception as e:
+            messagebox.showinfo("Error", "")

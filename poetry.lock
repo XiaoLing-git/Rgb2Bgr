@@ -634,5 +634,5 @@ pillow = ">=10,<11"
 
 [metadata]
 lock-version = "2.0"
-python-versions = ">=3.10,<3.14"
-content-hash = "15ed852fdb636e7506820454e60e9df6e057d2e42692d8a5b9bc8d53f0df3358"
+python-versions = "3.10.12"
+content-hash = "22bdc13dcf9ce50d60645752a37361e7ccf6ff0e2fa6191415f2c22a32ae660e"

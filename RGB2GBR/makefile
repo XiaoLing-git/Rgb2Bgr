@@ -4,15 +4,13 @@ THIS_DIR_TEMP_FILE = $(THIS_DIR)/*.log
 
 CURRENT_DIR_NAME = $(notdir $(shell pwd))
 
-SUB_FOLDER = temp save
+SUB_FOLDER = bin
 
 clean:
 	rm -rf $(THIS_DIR)/temp/*.jpg
 	rm -rf $(THIS_DIR)/temp/*.png
-	rm -rf $(THIS_DIR)/temp/*.bin
 	rm -rf $(THIS_DIR)/save/*.jpg
 	rm -rf $(THIS_DIR)/save/*.png
-	rm -rf $(THIS_DIR)/save/*.bin
 
 format :
 	black $(THIS_DIR)/

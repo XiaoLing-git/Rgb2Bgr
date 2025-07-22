@@ -10,6 +10,8 @@ THIS_DIR = (
     else Path(__file__).parent
 )
 
+print("RGB2GBR",THIS_DIR)
+
 BIN_FOLDER = THIS_DIR / "bin"
 
 BIN_FILE_NAME = "libimagetools.so"

@@ -50,7 +50,9 @@ class LnkScreenPictureApp(BaseUi):
         )
         self.control.de_color.base_button.configure(command=self.adjust_all_setup)
         self.control.save.base_save_button.configure(command=self.save_button_onclick)
-        self.control.save.base_save_bin_button.configure(command=self.bin_save_button_onclick)
+        self.control.save.base_save_bin_button.configure(
+            command=self.bin_save_button_onclick
+        )
 
         self.selected_file: Path | None = None
         self.last_file: Path | None = None
@@ -176,12 +178,15 @@ class LnkScreenPictureApp(BaseUi):
                 Path(folder_path)
                 / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.name}",
             )
-            image_tool = ImageTools(Path(folder_path)
+            image_tool = ImageTools(
+                Path(folder_path)
                 / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.name}",
-                                    Path(folder_path)
-                                    / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin"
-                                    )
-            Path(folder_path) / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin"
+                Path(folder_path)
+                / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin",
+            )
+            Path(
+                folder_path
+            ) / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin"
             image_tool.run()
         else:
             shutil.copy(
@@ -189,13 +194,14 @@ class LnkScreenPictureApp(BaseUi):
                 SAVE_FOLDER
                 / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.name}",
             )
-            image_tool = ImageTools(Path(folder_path)
-                                    / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.name}",
-                                    Path(folder_path)
-                                    / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin"
-                                    )
-            print(Path(folder_path) / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin")
+            image_tool = ImageTools(
+                Path(folder_path)
+                / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.name}",
+                Path(folder_path)
+                / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin",
+            )
+            print(
+                Path(folder_path)
+                / f"{int(time.time())}_{sharp_value}_{contrast_value}_{option_str}_{de_color}_{self.selected_file.stem}.bin"
+            )
             image_tool.run()
-
-
-

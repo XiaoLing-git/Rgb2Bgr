@@ -53,7 +53,9 @@ class FolderChoiceSaveElement(BaseUi):
             text="Generate Bin",
             command=self.on_click,
         )
-        self.base_save_bin_button.pack(side="top", padx=5, pady=1, fill="x", expand=True)
+        self.base_save_bin_button.pack(
+            side="top", padx=5, pady=1, fill="x", expand=True
+        )
 
     def on_click(self):
         folder_path = filedialog.askdirectory(

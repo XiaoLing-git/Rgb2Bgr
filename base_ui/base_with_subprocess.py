@@ -10,7 +10,7 @@ class BaseUiWithSubProcess:
     def __init__(
         self,
         master: Union[ttk.Frame, ttk.Window],
-        name: str="",
+        name: str = "",
         label_frame_flag: bool = True,
     ):
         self.__label_frame_flag = label_frame_flag
@@ -19,7 +19,7 @@ class BaseUiWithSubProcess:
         self.sub_process_run_state = False
         self.label_frame = self._create_label_frame()
         self.subframe: List[ttk.Frame] = []
-        self.message_count:int = 0
+        self.message_count: int = 0
 
     def _create_label_frame(self) -> ttk.Labelframe:
         if self.__label_frame_flag:
@@ -29,7 +29,7 @@ class BaseUiWithSubProcess:
         label_frame.pack(side="top", fill="x", padx=2, pady=1, expand=1)
         return label_frame
 
-    def sleep(self,delay_time:int):
+    def sleep(self, delay_time: int):
         start_time = time.time()
         while True:
             if time.time() - start_time > delay_time:
@@ -40,8 +40,8 @@ class BaseUiWithSubProcess:
         if error is None:
             self.root.update()
         else:
-            messagebox.showinfo("警告",str(error))
-            self.message_count = self.message_count +  1
+            messagebox.showinfo("警告", str(error))
+            self.message_count = self.message_count + 1
             self.sub_process_run_state = False
 
 

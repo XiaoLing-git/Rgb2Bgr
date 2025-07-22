@@ -1,5 +1,3 @@
-
-
 class Rgb2BgrException(Exception):
     def __init__(self, msg):
         self._msg = msg

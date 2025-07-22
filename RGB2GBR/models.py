@@ -1,10 +1,13 @@
 import sys
-from pathlib import WindowsPath
+from pathlib import Path
+
+if "win" in sys.platform:
+    raise SystemError(f"Only call on Linux OS")
 
 THIS_DIR = (
-    WindowsPath(sys.executable).parent / "RGB2GBR"
+    Path(sys.executable).parent / "RGB2GBR"
     if getattr(sys, "frozen", False)
-    else WindowsPath(__file__).parent
+    else Path(__file__).parent
 )
 
 BIN_FOLDER = THIS_DIR / "bin"

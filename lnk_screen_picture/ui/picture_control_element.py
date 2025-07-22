@@ -4,15 +4,12 @@ from typing import Union, Optional
 import ttkbootstrap as ttk  # type: ignore
 from ttkbootstrap.constants import *  # type: ignore
 
-from apps.base_ui.base import BaseUi
-from apps.base_ui.base_button_control_element import BaseButtonControlElement
-from apps.base_ui.base_checkbutton_control_element import BaseCheckButtonControlElement
-from apps.base_ui.base_file_choice_element import BaseFileChoiceElement
-from apps.base_ui.base_options_select_control_element import BaseOptionsSelectElement
-from apps.base_ui.base_scale_control_element import BaseScaleControlElement
-from apps.lnk_screen_picture.ui.folder_choice_and_save_element import (
-    FolderChoiceSaveElement,
-)
+from base_ui.base import BaseUi
+from base_ui.base_checkbutton_control_element import BaseCheckButtonControlElement
+from base_ui.base_file_choice_element import BaseFileChoiceElement
+from base_ui.base_options_select_control_element import BaseOptionsSelectElement
+from base_ui.base_scale_control_element import BaseScaleControlElement
+from lnk_screen_picture.ui.folder_choice_and_save_element import FolderChoiceSaveElement
 
 
 class PictureControlElement(BaseUi):

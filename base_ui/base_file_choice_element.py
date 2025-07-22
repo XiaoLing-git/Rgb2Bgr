@@ -1,5 +1,5 @@
 from pathlib import Path
-from tkinter import StringVar, filedialog
+from tkinter import DoubleVar, StringVar, filedialog
 
 import ttkbootstrap as ttk  # type: ignore
 from ttkbootstrap.constants import *  # type: ignore
@@ -8,11 +8,11 @@ from typing import Union, Optional
 from base_ui.base import BaseUi
 
 
-class FolderChoiceSaveElement(BaseUi):
+class BaseFileChoiceElement(BaseUi):
     def __init__(
         self,
         master: Union[ttk.Frame, ttk.Window],
-        name: str = "保存路径选择",
+        name: str = "文件选择",
         text: str = "打开文件管理器",
         start: float = 0,
         end: float = 100,
@@ -27,38 +27,31 @@ class FolderChoiceSaveElement(BaseUi):
         self.end = end
 
         self.show_label = ttk.Label(
-            self.label_frame, text="未选中任何文件夹", width=7, anchor="w"
+            self.label_frame, text="未选中任何文件", width=7, anchor="w"
         )
         self.show_label.pack(side="top", padx=5, pady=1, fill="x", expand=True)
 
-        self.base_choice_button = ttk.Button(
+        self.base_button = ttk.Button(
             self.label_frame,
             style="success",
             text=self.text,
             command=self.on_click,
         )
-        self.base_choice_button.pack(side="top", padx=5, pady=1, fill="x", expand=True)
-
-        self.base_save_button = ttk.Button(
-            self.label_frame,
-            style="success",
-            text="保存图片",
-            command=self.on_click,
-        )
-        self.base_save_button.pack(side="top", padx=5, pady=1, fill="x", expand=True)
+        self.base_button.pack(side="top", padx=5, pady=1, fill="x", expand=True)
 
     def on_click(self):
-        folder_path = filedialog.askdirectory(
-            title="选择保存文件路径",
+        file_path = filedialog.askopenfilename(
+            title="选择文件",
+            filetypes=[("png图片文件", "*.png;*.jpg"), ("所有文件", "*.*")],
         )
-        if folder_path:
-            self.show_label["text"] = folder_path
-            self.value.set(folder_path)
+        if file_path:
+            self.show_label["text"] = file_path
+            self.value.set(file_path)
         print(self.value.get())
 
 
 if __name__ == "__main__":
     app = ttk.Window(title="this is Test")
 
-    baseui = FolderChoiceSaveElement(app)
+    baseui = BaseFileChoiceElement(app)
     app.mainloop()

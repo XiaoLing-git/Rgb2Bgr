@@ -8,11 +8,11 @@ import ttkbootstrap as ttk  # type: ignore
 from PIL import Image, ImageTk
 from ttkbootstrap.constants import *  # type: ignore
 
-from apps.base_ui.base import BaseUi
-from apps.lnk_screen_picture.model import TEMP_FOLDER, SAVE_FOLDER
-from apps.lnk_screen_picture.ui.picture_control_element import PictureControlElement
-from apps.lnk_screen_picture.ui.picture_show_element import PictureShowElement
-from apps.lnk_screen_picture.utils import adjust_all
+from base_ui.base import BaseUi
+from lnk_screen_picture.model import TEMP_FOLDER, SAVE_FOLDER
+from lnk_screen_picture.ui.picture_control_element import PictureControlElement
+from lnk_screen_picture.ui.picture_show_element import PictureShowElement
+from lnk_screen_picture.utils import adjust_all
 
 
 class LnkScreenPictureApp(BaseUi):

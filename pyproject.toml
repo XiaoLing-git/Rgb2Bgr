@@ -10,6 +10,7 @@ packages = [{include = "RGB2GBR/*"}]
 python = "^3.10"
 numpy = "2.0"
 matplotlib = "^3.10.3"
+ttkbootstrap = "^1.14.1"
 
 
 [build-system]

@@ -4,7 +4,7 @@ from typing import Union, Optional
 import ttkbootstrap as ttk  # type: ignore
 from ttkbootstrap.constants import *  # type: ignore
 
-from apps.base_ui.base import BaseUi
+from base_ui.base import BaseUi
 
 
 class PictureShowElement(BaseUi):

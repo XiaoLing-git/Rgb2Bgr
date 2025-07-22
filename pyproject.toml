@@ -2,8 +2,9 @@
 name = "rgb2gbr"
 version = "0.1.0"
 description = ""
-authors = ["N"]
+authors = ["xiaoling <samuel.ling.xiao@qq.com>"]
 readme = "README.md"
+packages = [{include = "RGB2GBR/*"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

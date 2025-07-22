@@ -52,6 +52,7 @@ class PictureControlElement(BaseUi):
         self.save: FolderChoiceSaveElement = FolderChoiceSaveElement(
             self.label_frame, name="保存图片"
         )
+
         self.label_frame.pack_propagate(False)
         self.label_frame.configure(width=500, height=1000)
         self.label_frame.pack(fill="y", expand="y", side="right")

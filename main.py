@@ -1,17 +1,15 @@
-from pathlib import Path
+import ttkbootstrap as ttk  # type: ignore
 
-import numpy as np
+from lnk_screen_picture.app import LnkScreenPictureApp
 
-from RGB2GBR.api import ImageTools
-from RGB2GBR.models import THIS_DIR, BIN_FOLDER, BIN_FILE_PATH
 
-if __name__ == '__main__':
-    # print(THIS_DIR)
-    # print(BIN_FOLDER)
-    # print(BIN_FILE_PATH)
-    # print(THIS_DIR)
+def start_app():
+    version = "1.0.0"
+    root = ttk.Window(title=f"水墨屏图片处理 {version}")
 
-    pic_path = THIS_DIR.parent / "20250625-160750.jpg"
-    image_tools = ImageTools(pic_path,Path("./result.bin"))
+    LnkScreenPictureApp(root)
+    root.mainloop()
 
-    image_tools.run()
+
+if __name__ == "__main__":
+    start_app()

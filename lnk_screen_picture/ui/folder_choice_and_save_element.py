@@ -45,7 +45,15 @@ class FolderChoiceSaveElement(BaseUi):
             text="保存图片",
             command=self.on_click,
         )
-        self.base_save_button.pack(side="top", padx=5, pady=1, fill="x", expand=True)
+        # self.base_save_button.pack(side="top", padx=5, pady=1, fill="x", expand=True)
+
+        self.base_save_bin_button = ttk.Button(
+            self.label_frame,
+            style="success",
+            text="Generate Bin",
+            command=self.on_click,
+        )
+        self.base_save_bin_button.pack(side="top", padx=5, pady=1, fill="x", expand=True)
 
     def on_click(self):
         folder_path = filedialog.askdirectory(

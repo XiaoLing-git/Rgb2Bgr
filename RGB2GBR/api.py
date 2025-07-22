@@ -12,14 +12,12 @@ class ImageTools:
     def __init__(self,
                  rgb_file_input_file:Path,
                  bgr_file_output_file:Path
-                 # y4_file_output_file:Path
                  ):
 
 
 
         self.rgb_file_input_file = rgb_file_input_file
         self.bgr_file_output_file = bgr_file_output_file
-        # self.y4_file_output_file = y4_file_output_file
         self.__assert_attr()
 
 
@@ -78,6 +76,7 @@ class ImageTools:
         try:
             response = self.swap_rgb_bgr(self.load_input_file_to_array())
             response = self.index_mapping_spectra6_aio_y4(response)
+            # print(response)
             with open(self.bgr_file_output_file, 'wb') as f:
                 f.write(response)
         except Exception as e:

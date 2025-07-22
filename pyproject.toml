@@ -8,6 +8,7 @@ packages = [{include = "RGB2GBR/*"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+numpy = "2.0"
 
 
 [build-system]

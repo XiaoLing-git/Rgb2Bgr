@@ -1,10 +1,10 @@
 import sys
-from pathlib import Path
+from pathlib import WindowsPath
 
 THIS_DIR = (
-    Path(sys.executable).parent / "apps" / "lock_pro_wifi"
+    WindowsPath(sys.executable).parent / "RGB2GBR"
     if getattr(sys, "frozen", False)
-    else Path(__file__).parent
+    else WindowsPath(__file__).parent
 )
 
 BIN_FOLDER = THIS_DIR / "bin"

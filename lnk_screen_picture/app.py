@@ -78,8 +78,12 @@ class LnkScreenPictureApp(BaseUi):
         try:
             option_str = self.control.pic_size.idle_port_check.get()
             response = option_str.split("x")
-            pic_width = int(response[0])
-            pic_height = int(response[1])
+            if len(response) !=2:
+                pic_width = None
+                pic_height = None
+            else:
+                pic_width = int(response[0])
+                pic_height = int(response[1])
         except AssertionError as e:
             messagebox.showinfo("警告", "分辨率格式输出异常，格式：整数x整数")
         except ValueError as e:
@@ -100,10 +104,10 @@ class LnkScreenPictureApp(BaseUi):
                     new_file_path,
                     sharp_value,
                     contrast_value,
-                    pic_height,
-                    pic_width,
                     bool(de_color),
                     de_shake,
+                    pic_height,
+                    pic_width,
                 )
                 self.show_picture(str(new_file_path))
                 self.selected_file = file_path

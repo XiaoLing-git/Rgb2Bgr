@@ -10,7 +10,7 @@ class BaseOptionsSelectElement(BaseUi):
         self,
         master: Union[ttk.Frame, ttk.Window],
         name: str = "串口控制",
-        options: list[str] = ["2560x1440", "1600x1200", "800x480"],
+        options: list[str] = ["2560x1440", "1600x1200", "800x480",""],
         label_frame_flag: bool = True,
     ) -> None:
         super().__init__(master, name, label_frame_flag)

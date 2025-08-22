@@ -32,6 +32,14 @@ class BaseCheckButtonControlElement(BaseUi):
         )
         self.base_button.pack(side="left", padx=5, pady=1, fill="x", expand=True)
 
+        self.com_button = ttk.Combobox(
+            self.label_frame,
+            width=7,
+        )
+        self.com_button['values'] = ('R', 'G', 'B', 'A')
+        self.com_button.current(3)
+        self.com_button.pack(side="left", padx=5, pady=1, fill="x", expand=True)
+
     def onclick(self):
         if self.check_var.get() == 1:
             print("enable")

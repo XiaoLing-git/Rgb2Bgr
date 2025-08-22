@@ -72,18 +72,23 @@ def adjust_all(
     threshold: int,
     width: int|None,
     height: int|None,
+    rotate:int|None=None,
 ):
     start_time = time.time()
+    print(rotate,height,width)
     try:
         image = Image.open(input_path)
         print("original: ","*"*30,f" width = {image.width}, height = {image.height}", "*"*30)
 
-        if image.width > image.height:
+        if rotate:
             image = image.rotate(90,expand=True)
+
+            print("after rotate: ", "*" * 30, f" width = {image.width}, height = {image.height}", "*" * 30)
+
         if width and height:
             image = image.resize((width, height))  # type: ignore[assignment]
 
-        print("after resize: ", "*" * 30, f" width = {image.width}, height = {image.height}", "*"*30)
+            print("after resize: ", "*" * 30, f" width = {image.width}, height = {image.height}", "*"*30)
 
         enhancer = ImageEnhance.Contrast(image)
 

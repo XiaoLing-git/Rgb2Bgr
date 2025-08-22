@@ -40,6 +40,14 @@ class LnkScreenPictureApp(BaseUi):
             "<Return>", self.idle_port_check_onclick
         )
 
+        self.control.pic_rotate.idle_port_check.bind(
+            "<<ComboboxSelected>>", self.idle_port_check_onclick_v2
+        )
+
+        self.control.pic_rotate.idle_port_check.bind(
+            "<Return>", self.idle_port_check_onclick_v2
+        )
+
         self.control.contrast.base_scale.bind(
             "<ButtonRelease-1>", lambda event: self.adjust_all_setup()
         )
@@ -60,6 +68,10 @@ class LnkScreenPictureApp(BaseUi):
 
     def idle_port_check_onclick(self, event):
         self.control.pic_size.on_select(event)
+        self.adjust_all_setup()
+
+    def idle_port_check_onclick_v2(self, event):
+        self.control.pic_rotate.on_select(event)
         self.adjust_all_setup()
 
     def choice_file_and_show(self):
@@ -96,6 +108,7 @@ class LnkScreenPictureApp(BaseUi):
             sharp_value = float(self.control.sharp.value.get())
             de_color = self.control.de_color.check_var.get()
             de_shake = int(self.control.de_shake.value.get())
+            rotate = int(self.control.pic_rotate.idle_port_check.get())
 
             if file_path.exists():
                 new_file_path = TEMP_FOLDER / f"{int(time.time())}_{file_path.name}"
@@ -108,6 +121,7 @@ class LnkScreenPictureApp(BaseUi):
                     de_shake,
                     pic_height,
                     pic_width,
+                    rotate
                 )
                 self.show_picture(str(new_file_path))
                 self.selected_file = file_path

@@ -28,6 +28,11 @@ class PictureControlElement(BaseUi):
         self.pic_size: BaseOptionsSelectElement = BaseOptionsSelectElement(
             self.label_frame, "图片规格设置"
         )
+
+        self.pic_rotate: BaseOptionsSelectElement = BaseOptionsSelectElement(
+            self.label_frame, "Rotate",options= ["270","180","90","0"]
+        )
+
         self.sharp: BaseScaleControlElement = BaseScaleControlElement(
             self.label_frame, name="鲜明度调节", start=0, end=4.0
         )

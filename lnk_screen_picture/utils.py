@@ -76,17 +76,27 @@ def adjust_all(
     start_time = time.time()
     try:
         image = Image.open(input_path)
-        print("&"*100,image.height,image.width)
+        print("original: ","*"*30,f" width = {image.width}, height = {image.height}", "*"*30)
 
         if image.width > image.height:
             image = image.rotate(90,expand=True)
         if width and height:
             image = image.resize((width, height))  # type: ignore[assignment]
+
+        print("after resize: ", "*" * 30, f" width = {image.width}, height = {image.height}", "*"*30)
+
         enhancer = ImageEnhance.Contrast(image)
+
         enhanced_image = enhancer.enhance(factor)
         enhanced_image.save(output_path)
+
+        print("after enhance: ", "*" * 30, f" width = {image.width}, height = {image.height}", "*"*30)
+
         sharpened = enhanced_image.filter(ImageFilter.SHARPEN)
         image = Image.blend(enhanced_image, sharpened, alpha=amount * 0.5)  # type: ignore[assignment]
+
+        print("after sharpe: ", "*" * 30, f" width = {image.width}, height = {image.height}", "*"*30)
+
         if gray_scale_flag:
             image = floyd_steinberg_dithering(image, threshold)
         image.save(output_path)
